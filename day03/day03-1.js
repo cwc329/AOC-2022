@@ -16,7 +16,7 @@ async function processLineByLine() {
         // Each line in input.txt will be successively available here as `line`.
         lines.push(line);
     }
-    solve(lines);
+    return solve(lines);
 }
 
 function solve(inputs) {
@@ -42,7 +42,7 @@ function solve(inputs) {
             }
         }
     });
-    console.log(result);
+    return result;
 }
 
-processLineByLine();
+processLineByLine().then((result) => console.log(result));

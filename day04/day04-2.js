@@ -16,11 +16,20 @@ async function processLineByLine() {
         // Each line in input.txt will be successively available here as `line`.
         lines.push(line);
     }
-    solve(lines);
+    return solve(lines);
 }
 
 function solve(inputs) {
-
+    let result = 0;
+    inputs.forEach((e) => {
+        const ranges = e.split(',').map((e) => e.split('-').map(Number)).sort((a, b) => {
+            return a[0] - b[0] === 0 ? b[1] - a[1] : a[0] - b[0];
+        });
+        if (ranges[0][0] <= ranges[1][0] && ranges[0][1] >= ranges[1][0]){
+            result += 1;
+        }
+    });
+    return result
 }
 
-processLineByLine();
+processLineByLine().then((result) => console.log(result))

@@ -16,11 +16,11 @@ async function processLineByLine() {
         // Each line in input.txt will be successively available here as `line`.
         lines.push(line);
     }
-    solve(lines);
+    return solve(lines);
 }
 
 function solve(inputs) {
 
 }
 
-processLineByLine();
+processLineByLine().then((result) => console.log(result));

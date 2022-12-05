@@ -16,7 +16,7 @@ async function processLineByLine() {
         // Each line in input.txt will be successively available here as `line`.
         lines.push(line);
     }
-    solve(lines);
+    return solve(lines);
 }
 
 function solve(inputs) {
@@ -60,16 +60,16 @@ function solve(inputs) {
     let strategies = inputs.map((e) => {
         return e.split(' ');
     });
-    let score = 0;
+    let result = 0;
     strategies.forEach((s) => {
         const [, a] = s;
         const strategyScore = a === 'X' ? 1 : a === 'Y' ? 2 : 3;
         const winner = getWinner(s);
         const winnerScore = winner === true ? 6 : winner === false ? 0 : 3;
-        score += strategyScore;
-        score += winnerScore;
+        result += strategyScore;
+        result += winnerScore;
     });
-    console.log(score);
+    return result;
 }
 
-processLineByLine();
+processLineByLine().then((result) => console.log(result));
