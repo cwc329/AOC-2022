@@ -3,7 +3,7 @@ const readline = require('readline');
 const lines = [];
 
 async function processLineByLine() {
-    const fileStream = fs.createReadStream('input.txt');
+    const fileStream = fs.createReadStream(`${__dirname}/input.txt`);
 
     const rl = readline.createInterface({
         input: fileStream,

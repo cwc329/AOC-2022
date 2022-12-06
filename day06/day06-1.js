@@ -20,15 +20,16 @@ async function processLineByLine() {
 }
 
 function solve(inputs) {
-    let result = 0;
-    inputs.forEach((e, i) => {
-        const ranges = e.split(',').map((e) => e.split('-').map(Number)).sort((a, b) => {
-            return a[0] - b[0] === 0 ? b[1] - a[1] : a[0] - b[0];
-        });
-        if (ranges[0][0] <= ranges[1][0] && ranges[0][1] >= ranges[1][1]){
-            result += 1;
+    const string = inputs[0];
+    let result = 3;
+    let letters = new Map();
+    while (letters.size < 4) {
+        letters.clear();
+        for (let i = result; i >= result - 3; i--) {
+            letters.set(string[i], result);
         }
-    });
+        result += 1;
+    }
     return result;
 }
 
